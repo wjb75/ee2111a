@@ -1,6 +1,6 @@
 #include <MeMCore.h>
 
-MeUltrasonicSensor ultrasonic(PORT_3);  
+MeUltrasonicSensor ultrasonic(PORT_2);  
 MeDCMotor leftMotor(M1);                
 MeDCMotor rightMotor(M2);               
 
@@ -74,14 +74,14 @@ float getFilteredDistance(int numSamples = 3) {
 
 
 void moveForward(int speed) {
-    leftMotor.run(speed);
+    leftMotor.run(-speed);
     rightMotor.run(speed);
 }
 
 // 左转 170°
 void turnLeft(int speed, int delayTime) {
     Serial.println("Turning left 170°...");
-    leftMotor.run(-speed);
+    leftMotor.run(speed);
     rightMotor.run(speed);
     delay(delayTime);
     stopMotors();
