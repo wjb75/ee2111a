@@ -5,8 +5,8 @@ MeDCMotor leftMotor(M1);
 MeDCMotor rightMotor(M2);               
 
 #define TURN_SPEED 100      
-#define TURN_DELAY 1150     
-#define OBSTACLE_DISTANCE 3 
+#define TURN_DELAY 3000     
+#define OBSTACLE_DISTANCE 8 
 
 
 unsigned long lastTurnTime = 0;  
@@ -31,12 +31,6 @@ void loop() {
     Serial.print("Distance: ");
     Serial.println(distance);
 
-    
-    if (millis() - lastTurnTime < AVOID_TIME) {
-        Serial.println("Recently turned, skipping obstacle check...");
-        moveForward(100);
-        return;
-    }
 
     if (distance > 0 && distance <= OBSTACLE_DISTANCE) {  
         stopMotors();
@@ -82,10 +76,10 @@ void moveForward(int speed) {
 void turnLeft(int speed, int delayTime) {
     Serial.println("Turning left 170°...");
     leftMotor.run(speed);
-    rightMotor.run(speed);
+    rightMotor.run(+speed);
     delay(delayTime);
     stopMotors();
-    delay(500);  
+    //delay(500);  
     lastTurnTime = millis();  
 }
 
