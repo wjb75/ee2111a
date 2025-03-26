@@ -1,8 +1,11 @@
 #include <MeMCore.h>
+#include "MeMCore.h"
 
-MeUltrasonicSensor ultrasonic(PORT_3);  
+MeUltrasonicSensor ultrasonic(PORT_2);  
 MeDCMotor leftMotor(M1);                
-MeDCMotor rightMotor(M2);               
+MeDCMotor rightMotor(M2); 
+MeLineFollower lineFinder(PORT_3); /* Line Finder module can only be connected to PORT_3, PORT_4, PORT_5, PORT_6 of base shield. */
+
 
 #define TURN_SPEED 100      
 #define TURN_DELAY 1150     
