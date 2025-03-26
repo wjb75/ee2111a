@@ -1,12 +1,14 @@
 #include <MeMCore.h>
 
 MeUltrasonicSensor ultrasonic(PORT_2);  
+MeLineFollower lineFinder(PORT_3); /* Line Finder module can only be connected to PORT_3, PORT_4, PORT_5, PORT_6 of base shield. */
 MeDCMotor leftMotor(M1);                
 MeDCMotor rightMotor(M2);               
 
 #define TURN_SPEED 100      
 #define TURN_DELAY 3000     
 #define OBSTACLE_DISTANCE 8 
+#define ALIGN_DELAY 100
 
 
 unsigned long lastTurnTime = 0;  
@@ -27,6 +29,41 @@ void setup() {
 }
 
 void loop() {
+   int sensorState = lineFinder.readSensors();
+   if(sensorState ==  S1_OUT_S2_OUT){
+      Serial.println("Sensor left(1) and right(2) are outside of black line. Safe to go!");
+   }
+
+   while (sensorState == S1_IN_S2_OUT || sensorState == S1_OUT_S2_IN  ) {
+   
+  
+   switch(sensorState)
+   {
+    //case S1_IN_S2_IN:
+    //  Serial.println("Sensor left(1) and right(2)  are on black line"); 
+    //  break;
+    case S1_IN_S2_OUT: 
+      Serial.println("Sensor right(2) is on black line");  //needs to turn right to align first
+      turnLeft(-TURN_SPEED, ALIGN_DELAY);
+      break;
+    case S1_OUT_S2_IN: 
+      Serial.println("Sensor left(1) is on black line"); //needs to turn left to align first
+      turnLeft(TURN_SPEED, ALIGN_DELAY);
+      break;
+    //case S1_OUT_S2_OUT: 
+    //  Serial.println("Sensor left(1) and right(2) are outside of black line");
+    //  break;
+    default: break;
+   }
+   sensorState = lineFinder.readSensors();
+  }
+
+  if (sensorState == S1_IN_S2_IN)
+  {
+    turnLeft(TURN_SPEED, TURN_DELAY); 
+
+  }
+
     float distance = getFilteredDistance();  
     Serial.print("Distance: ");
     Serial.println(distance);
