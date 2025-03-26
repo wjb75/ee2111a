@@ -42,11 +42,11 @@ void loop() {
     //case S1_IN_S2_IN:
     //  Serial.println("Sensor left(1) and right(2)  are on black line"); 
     //  break;
-    case S1_IN_S2_OUT: 
+    case S1_OUT_S2_IN: 
       Serial.println("Sensor right(2) is on black line");  //needs to turn right to align first
       turnLeft(-TURN_SPEED, ALIGN_DELAY);
       break;
-    case S1_OUT_S2_IN: 
+    case S1_IN_S2_OUT: 
       Serial.println("Sensor left(1) is on black line"); //needs to turn left to align first
       turnLeft(TURN_SPEED, ALIGN_DELAY);
       break;
