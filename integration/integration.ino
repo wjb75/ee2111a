@@ -6,7 +6,7 @@ MeDCMotor leftMotor(M1);
 MeDCMotor rightMotor(M2);               
 
 #define TURN_SPEED 100      
-#define TURN_DELAY 3000     
+#define TURN_DELAY 2000     
 #define OBSTACLE_DISTANCE 8 
 #define ALIGN_DELAY 100
 #define OPAMP_PIN A1
@@ -36,6 +36,9 @@ void loop() {
 
   ir = analogRead(OPAMP_PIN); //check if the ir emitter is in certain distance ahead
   // do sth if the ir station is in front
+  //if(ir > 512){ 
+
+  //}
 
 
    int sensorState = lineFinder.readSensors();
