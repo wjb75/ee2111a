@@ -9,17 +9,18 @@ MeDCMotor rightMotor(M2);
 #define TURN_DELAY 3000     
 #define OBSTACLE_DISTANCE 8 
 #define ALIGN_DELAY 100
-
+#define OPAMP_PIN A1
+#define FORCE_SENSOR A0
 
 unsigned long lastTurnTime = 0;  
 unsigned long AVOID_TIME = TURN_DELAY * 1.5;
+int force = 0; // the reading from the force sensor
+int ir = 0; //reading from the ir op amp sensor
 
 float getFilteredDistance(int numSamples = 3);
 void moveForward(int speed);
 void turnLeft(int speed, int delayTime);
 void stopMotors();
-
-
 
 
 void setup() {
@@ -29,6 +30,14 @@ void setup() {
 }
 
 void loop() {
+  // first check if the dust bag is full by reading the force sensors.
+  force = analogRead(FORCE_SENSOR);
+  //IF selection statement : do sth if force reading exceeds certain val
+
+  ir = analogRead(OPAMP_PIN); //check if the ir emitter is in certain distance ahead
+  // do sth if the ir station is in front
+
+
    int sensorState = lineFinder.readSensors();
    if(sensorState ==  S1_OUT_S2_OUT){
       Serial.println("Sensor left(1) and right(2) are outside of black line. Safe to go!");
