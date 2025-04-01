@@ -6,7 +6,7 @@ MeDCMotor leftMotor(M1);
 MeDCMotor rightMotor(M2);               
 
 #define TURN_SPEED 100      
-#define TURN_DELAY 2000     
+#define TURN_DELAY 1500     
 #define OBSTACLE_DISTANCE 8 
 #define ALIGN_DELAY 100
 #define OPAMP_PIN A1
