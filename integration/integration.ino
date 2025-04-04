@@ -41,10 +41,10 @@ void loop() {
 
 
   ir = analogRead(OPAMP_PIN); //check if the ir emitter is in certain distance ahead
-  // do sth if the ir station is in front
-  //if(ir > 512){ 
-
-  //}
+  // do sth if the ir station is in front ( the voltage value is smaller than 2.5V)
+  if(ir < 512){ 
+    return;
+  }
 
 
    int sensorState = lineFinder.readSensors();
