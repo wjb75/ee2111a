@@ -1,7 +1,7 @@
 #include <MeMCore.h>
 
 MeUltrasonicSensor ultrasonic(PORT_2);  
-MeLineFollower lineFinder(PORT_3); /* Line Finder module can only be connected to PORT_3, PORT_4, PORT_5, PORT_6 of base shield. */
+MeLineFollower lineFinder(PORT_5); /* Line Finder module can only be connected to PORT_3, PORT_4, PORT_5, PORT_6 of base shield. */
 MeDCMotor leftMotor(M1);                
 MeDCMotor rightMotor(M2);    
 MeBuzzer buzzer;
@@ -13,7 +13,7 @@ MeBuzzer buzzer;
 #define ALIGN_DELAY 100
 #define NOTE_DS8 4978
 #define NOTE_A3  220
-#define OPAMP_PIN A1
+#define OPAMP_PIN A2
 #define FORCE_SENSOR A3
 
 unsigned long lastTurnTime = 0;  
@@ -42,8 +42,6 @@ void loop() {
     buzzer.tone(NOTE_DS8,20);
     return;
   }
-
-  
 
 
   ir = analogRead(OPAMP_PIN); //check if the ir emitter is in certain distance ahead
