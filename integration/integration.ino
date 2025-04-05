@@ -34,6 +34,20 @@ void setup() {
 }
 
 void loop() {
+
+  int a0 = analogRead(A0);
+  int a1 = analogRead(a1);
+  int a2 = analogRead(A2);
+  int a3 = analogRead(A3);
+
+  Serial.print("A0 is ");
+  Serial.println(A0);
+    Serial.print("A1 is ");
+  Serial.println(A1);
+    Serial.print("A2 is ");
+  Serial.println(A2);
+    Serial.print("A3 is ");
+  Serial.println(A3);
   // first check if the dust bag is full by reading the force sensors.
   force = analogRead(FORCE_SENSOR);
   //IF selection statement : do sth if force reading exceeds certain val
