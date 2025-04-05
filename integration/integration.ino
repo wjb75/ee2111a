@@ -36,7 +36,7 @@ void setup() {
 void loop() {
 
   int a0 = analogRead(A0);
-  int a1 = analogRead(a1);
+  int a1 = analogRead(A1);
   int a2 = analogRead(A2);
   int a3 = analogRead(A3);
 
@@ -144,7 +144,7 @@ void moveForward(int speed) {
 
 // 左转 170°
 void turnLeft(int speed, int delayTime) {
-    Serial.println("Turning left 170°...");
+    //Serial.println("Turning left 170°...");
     leftMotor.run(speed);
     rightMotor.run(+speed);
     delay(delayTime);
