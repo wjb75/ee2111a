@@ -14,7 +14,7 @@ MeBuzzer buzzer;
 #define NOTE_DS8 4978
 #define NOTE_A3  220
 #define OPAMP_PIN A1
-#define FORCE_SENSOR A0
+#define FORCE_SENSOR A3
 
 unsigned long lastTurnTime = 0;  
 unsigned long AVOID_TIME = TURN_DELAY * 1.5;
@@ -36,20 +36,21 @@ void setup() {
 void loop() {
   // first check if the dust bag is full by reading the force sensors.
   force = analogRead(FORCE_SENSOR);
+  Serial.println(force);
   //IF selection statement : do sth if force reading exceeds certain val
-  if(force > 256){
+  if(force > 100){
     buzzer.tone(NOTE_DS8,20);
     return;
   }
-  
+
   
 
 
   ir = analogRead(OPAMP_PIN); //check if the ir emitter is in certain distance ahead
   // do sth if the ir station is in front ( the voltage value is smaller than 2.5V)
-  if(ir < 512){ 
-    return;
-  }
+  //if(ir < 512){ 
+  //  return;
+  //}
 
 
    int sensorState = lineFinder.readSensors();
