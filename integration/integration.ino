@@ -8,7 +8,7 @@ MeBuzzer buzzer;
 
 
 #define TURN_SPEED 100      
-#define TURN_DELAY 1500     
+#define TURN_DELAY 2000     
 #define OBSTACLE_DISTANCE 8 
 #define ALIGN_DELAY 100
 #define NOTE_DS8 4978
