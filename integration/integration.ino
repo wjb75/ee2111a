@@ -37,14 +37,14 @@ void loop() {
   // first check if the dust bag is full by reading the force sensors.
   force = analogRead(FORCE_SENSOR);
   //IF selection statement : do sth if force reading exceeds certain val
-  buzzer.tone(NOTE_DS8,20);
+  //buzzer.tone(NOTE_DS8,20);
 
 
   ir = analogRead(OPAMP_PIN); //check if the ir emitter is in certain distance ahead
   // do sth if the ir station is in front ( the voltage value is smaller than 2.5V)
-  if(ir < 512){ 
-    return;
-  }
+  //if(ir < 512){ 
+  //  return;
+  //}
 
 
    int sensorState = lineFinder.readSensors();
