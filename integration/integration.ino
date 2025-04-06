@@ -14,7 +14,7 @@ MeBuzzer buzzer;
 #define NOTE_DS8 4978
 #define NOTE_A3  220
 #define OPAMP_PIN A1
-#define FORCE_SENSOR A3
+#define FORCE_SENSOR A0
 
 unsigned long lastTurnTime = 0;  
 unsigned long AVOID_TIME = TURN_DELAY * 1.5;
