@@ -52,6 +52,7 @@ force = analogRead(FORCE_SENSOR);
   int a2 = analogRead(A2);
   int a3 = analogRead(A3);
 
+
   Serial.print("A0 is ");
   Serial.println(A0);
     Serial.print("A1 is ");
@@ -87,10 +88,12 @@ force = analogRead(FORCE_SENSOR);
 
   ir = analogRead(OPAMP_PIN); //check if the ir emitter is in certain distance ahead
   // do sth if the ir station is in front ( the voltage value is smaller than 2.5V)
-  if(digipin12ir == 1){ 
+  if(digipin12ir == 0){ // the 0 means the emitter is detected 
     stopMotors();
     return;
   }
+
+
 
 
    int sensorState = lineFinder.readSensors();
