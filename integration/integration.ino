@@ -97,6 +97,7 @@ force = analogRead(FORCE_SENSOR);
 
 
    int sensorState = lineFinder.readSensors();
+   delayMicroseconds(5);
    if(sensorState ==  S1_OUT_S2_OUT){
       //Serial.println("Sensor left(1) and right(2) are outside of black line. Safe to go!");
    }
