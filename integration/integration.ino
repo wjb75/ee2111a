@@ -43,48 +43,23 @@ void setup() {
 
 void loop() {
 
-analogRead(A0);      // Dummy read to flush the ADC
-delayMicroseconds(5); 
-int a0 = analogRead(A0);
-delayMicroseconds(5);          // A short delay for the ADC to settle
-force = analogRead(FORCE_SENSOR);
-  int a1 = analogRead(A1);
-  int a2 = analogRead(A2);
-  int a3 = analogRead(A3);
-
-
-  Serial.print("A0 is ");
-  Serial.println(A0);
-    Serial.print("A1 is ");
-  Serial.println(A1);
-    Serial.print("A2 is ");
-  Serial.println(A2);
-    Serial.print("A3 is ");
-  Serial.println(A3);
-
   digipin11force = digitalRead(11);
-  
   digipin12ir = digitalRead(12);
-
-  Serial.print("11 is");
-  Serial.println(digipin11force);
-  Serial.print("12 is");
-  Serial.println(digipin12ir);
+  //Serial.print("11 is");
+  //Serial.println(digipin11force);
+  //Serial.print("12 is");
+  //Serial.println(digipin12ir);
 
 
   // first check if the dust bag is full by reading the force sensors.
   force = analogRead(FORCE_SENSOR);
-  Serial.println(force);
+  //Serial.println(force);
   //IF selection statement : do sth if force reading exceeds certain val
-
   if(digipin11force == 1){
     buzzer.tone(NOTE_DS8,20);
     stopMotors();
     return;
   }
-  //buzzer.tone(NOTE_DS8,20);
-
-
 
   ir = analogRead(OPAMP_PIN); //check if the ir emitter is in certain distance ahead
   // do sth if the ir station is in front ( the voltage value is smaller than 2.5V)
@@ -93,9 +68,6 @@ force = analogRead(FORCE_SENSOR);
     return;
   }
 
-
-
-
    int sensorState = lineFinder.readSensors();
    delayMicroseconds(5);
    if(sensorState ==  S1_OUT_S2_OUT){
@@ -103,7 +75,6 @@ force = analogRead(FORCE_SENSOR);
    }
 
    while (sensorState == S1_IN_S2_OUT || sensorState == S1_OUT_S2_IN  ) {
-   
   
    switch(sensorState)
    {
