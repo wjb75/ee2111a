@@ -1,7 +1,7 @@
 #include <MeMCore.h>
 
 MeUltrasonicSensor ultrasonic(PORT_2);  
-MeLineFollower lineFinder(PORT_5); /* Line Finder module can only be connected to PORT_3, PORT_4, PORT_5, PORT_6 of base shield. */
+MeLineFollower lineFinder(PORT_3); /* Line Finder module can only be connected to PORT_3, PORT_4, PORT_5, PORT_6 of base shield. */
 MeDCMotor leftMotor(M1);                
 MeDCMotor rightMotor(M2);    
 MeBuzzer buzzer;
